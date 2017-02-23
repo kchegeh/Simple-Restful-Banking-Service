@@ -1,5 +1,4 @@
-# Simple-Restful-Banking-Service
-# README #
+# Simple-Restful-Banking-Service #
 
 ### About this project ###
 
