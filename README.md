@@ -56,5 +56,3 @@ PROJECT_ROOT\build\reports\coverage, index.html should give a summary of the cod
 
 Code coverage achieved for now is at 71%
 
-### For comments, feedback or other communication  ###
-* daima.dataservices (at) gmail.com
