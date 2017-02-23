@@ -1,0 +1,92 @@
+group 'tala.bank'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: "jacoco"
+
+sourceCompatibility = 1.7
+
+jar {
+    baseName = 'tala-bank'
+    version =  '1.0-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    def SPRING_BOOT_VERSION = '1.4.0.RELEASE'
+
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: SPRING_BOOT_VERSION
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: SPRING_BOOT_VERSION
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: SPRING_BOOT_VERSION
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-tx
+    compile group: 'org.springframework', name: 'spring-tx', version: '4.3.2.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.6.2'
+
+    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.6.2'
+
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+    compile group: 'joda-time', name: 'joda-time', version: '2.9.4'
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20160212'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.1'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: SPRING_BOOT_VERSION
+
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    testCompile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+
+}
+
+test {
+    useTestNG()
+}
+
+jacocoTestReport {
+    group = "Reporting"
+    reports {
+        html.enabled true
+        xml.enabled true
+        csv.enabled false
+        html.destination "${buildDir}/reports/coverage"
+    }
+}
+
+test.finalizedBy(project.tasks.jacocoTestReport)

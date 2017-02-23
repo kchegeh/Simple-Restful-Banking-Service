@@ -1,0 +1,1 @@
+INSERT INTO Bank_Accounts(Account_Name,Last_Transaction_Date,Start_Date,End_Date,Balance,Created_By,Last_Edited_By,Created_Date,Last_Edited_Date,Entry_Id) values ('Account 1',NULL,CURRENT_TIMESTAMP,NULL,0,'USER 1',NULL,CURRENT_TIMESTAMP,null,UUID());
